@@ -28,9 +28,9 @@ abstract class Base
      * Base constructor.
      * @param Container $container
      */
-    public function __construct()
+    public function __construct(Container $container = null)
     {
-
+        $this->container = $container;
     }
 
     public function setContainer(Container $container){

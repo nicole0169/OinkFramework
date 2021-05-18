@@ -8,9 +8,10 @@
 
 namespace Oink\Bus\Subscribers;
 
+use Oink\Base;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class NotificationSubscriber implements EventSubscriberInterface
+class NotificationSubscriber extends Base implements EventSubscriberInterface
 {
     public static function getSubscribedEvents()
     {

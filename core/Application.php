@@ -16,6 +16,7 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+use App\Http\Middleware\BootstrapMiddleware;
 
 class Application
 {
@@ -26,11 +27,31 @@ class Application
     public function __construct(Container $container)
     {
         $this->container = $container;
+        $this->request = Request::createFromGlobals();
     }
 
-    public function handle(Request $request)
+    public function execute()
     {
-        $this->request = $request;
+
+        $this->handleMiddleware();
+
+        $this->sendResponse();
+    }
+
+    protected function sendResponse()
+    {
+        $response = $this->handleRequest();
+        $response->send();
+    }
+
+    protected function handleMiddleware()
+    {
+        $bootstrapMiddleware = new BootstrapMiddleware($this->container);
+        $bootstrapMiddleware->execute();
+    }
+
+    protected function handleRequest()
+    {
         $this->matcher = $this->getRouteMap();
 
         try {
@@ -40,11 +61,11 @@ class Application
             //$arguments = (new ArgumentResolver())->getArguments($request, $controller);
             //return call_user_func_array($controller, $arguments);
 
-            $controller = (new ControllerResolver())->getController($request);
+            $controller = (new ControllerResolver())->getController($this->request);
             if (method_exists($controller[0], 'setContainer')) {
                 $controller[0]->setContainer($this->container);
             }
-            return $controller[0]->{$controller[1]}($request);
+            return $controller[0]->{$controller[1]}($this->request);
         } catch (ResourceNotFoundException $e) {
             return new Response('Not found.', 404);
         }

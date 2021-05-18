@@ -2,11 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="robots" content="noindex,nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="no-referrer">
     <title>Title</title>
+    <link rel="stylesheet" href="/assets/css/vendor.min.css" media="screen">
+    <link rel="stylesheet" href="/assets/css/app.min.css" media="screen">
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/app.min.js"></script>
 </head>
 <body>
-<div>
-    <span>Hello,{{name}}!</span>
+<div class="wrapper">
+    <div class="sidebar">
+        <div class="sidememu">
+            <a href="/">
+                <div class="menu-top"></div>
+            </a>
+            <div class="menu-tab">
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a href="/dashboard" class title>
+                            <i class="fa fa-dashboard">
+                            </i>
+                            <br>我的
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-bottom"></div>
+        </div>
+        <div class="sidecontent"></div>
+    </div>
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <h3>
+                <span class="sidebar-toggle"><i class="fa fa-navicon"></i></span>
+                Oink
+            </h3>
+        </div>
+        <div class="">
+
+        </div>
+    </div>
+    <div class="content-panel">
+        <section class="page">
+
+        </section>
+    </div>
+    <div class="footer">
+
+    </div>
 </div>
 </body>
 </html>

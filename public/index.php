@@ -6,20 +6,12 @@
  * Time: 13:13
  */
 
+// Register The Auto Loader.
 require __DIR__ . '/../bootstrap/autoload.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
-use Symfony\Component\HttpFoundation\Request;
-use Oink\Application;
-use Pimple\Container;
-
-$request = Request::createFromGlobals();
-
-$container = new Container();
-
-foreach ($configApp['providers'] as $provider) {
-    $container->register(new $provider());
+try {
+    $app->execute();
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
-
-$app = new Application($container);
-$response = $app->handle($request);
-$response->send();

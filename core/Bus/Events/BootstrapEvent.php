@@ -10,5 +10,7 @@ namespace Oink\Bus\Events;
 
 class BootstrapEvent extends BaseEvent
 {
-
+    public function doBootstrap(){
+        echo 'Do bootstrap.';
+    }
 }

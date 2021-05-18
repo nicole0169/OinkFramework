@@ -8,10 +8,13 @@
 
 namespace Oink\Bus\Subscribers;
 
+use Oink\Base;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\EventDispatcher\GenericEvent;
 
-class BootstrapSubscriber implements EventSubscriberInterface
+class BootstrapSubscriber extends Base implements EventSubscriberInterface
 {
+
     public static function getSubscribedEvents()
     {
         // TODO: Implement getSubscribedEvents() method.
@@ -20,11 +23,12 @@ class BootstrapSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function executepre(){
+    public function executepre(GenericEvent $event){
         echo 'Bootstrap event pre done.';
+        //$event->doBootstrap();
     }
 
-    public function execute(){
+    public function execute(GenericEvent $event){
         echo 'Bootstrap event done.';
     }
 
