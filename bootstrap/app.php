@@ -12,6 +12,5 @@ $container = new Pimple\Container();
 foreach ($configApp['providers'] as $provider) {
     $container->register(new $provider());
 }
-
 $app = new Application($container);
 return $app;

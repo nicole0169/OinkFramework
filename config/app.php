@@ -8,10 +8,12 @@
 
 return [
     'providers' => [
+        Oink\Providers\AuthServiceProvider::class,
+        Oink\Providers\ClassServiceProvider::class,
         Oink\Providers\DatabaseServiceProvider::class,
-        Oink\Providers\TemplateServiceProvider::class,
-        Oink\Providers\TwigServiceProvider::class,
         Oink\Providers\EventServiceProvider::class,
-        Oink\Providers\HelperServiceProvider::class
+        Oink\Providers\HelperServiceProvider::class,
+        Oink\Providers\TemplateServiceProvider::class,
+        Oink\Providers\TwigServiceProvider::class
     ],
 ];

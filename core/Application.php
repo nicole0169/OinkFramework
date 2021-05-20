@@ -8,6 +8,7 @@
 
 namespace Oink;
 
+use App\Http\Middleware\AuthMiddleware;
 use Pimple\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,6 +48,10 @@ class Application
     protected function handleMiddleware()
     {
         $bootstrapMiddleware = new BootstrapMiddleware($this->container);
+        $authMiddleware = new AuthMiddleware($this->container);
+
+        $bootstrapMiddleware->setNextMiddleware($authMiddleware);
+
         $bootstrapMiddleware->execute();
     }
 
