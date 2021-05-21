@@ -39,15 +39,15 @@ class AuthManager extends Base
     public function checkCurrentSession()
     {
         if ($this->userSession->isLogged()) {
-            /*foreach ($this->filterProviders('SessionCheckProviderInterface') as $provider) {
+            foreach ($this->filterProviders('SessionCheckProviderInterface') as $provider) {
                 if (!$provider->isValidSession()) {
-                    $this->logger->debug('Invalidate session for '.$this->userSession->getUsername());
+                    $this->logger->debug('Invalidate session for ' . $this->userSession->getUsername());
                     $this->sessionStorage->flush();
                     $this->preAuthentication();
 
                     return false;
                 }
-            }*/
+            }
         }
 
         return true;
@@ -76,7 +76,7 @@ class AuthManager extends Base
      *
      * @param string $username
      * @param string $password
-     * @param bool   $fireEvent
+     * @param bool $fireEvent
      *
      * @return bool
      */
@@ -103,7 +103,6 @@ class AuthManager extends Base
     }
 
 
-
     /**
      * Filter registered providers by interface type.
      *
@@ -113,7 +112,7 @@ class AuthManager extends Base
      */
     private function filterProviders($interface)
     {
-        $interface = '\Oink\Auth\\'.$interface;
+        $interface = '\Oink\Auth\\' . $interface;
 
         return array_filter($this->providers, function (AuthProviderInterface $provider) use ($interface) {
             return is_a($provider, $interface);

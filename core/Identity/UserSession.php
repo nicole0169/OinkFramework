@@ -13,7 +13,9 @@ use Oink\Base;
 
 class UserSession extends Base
 {
-    public function isLogged(){
-        echo $this->helper->app->appTest();
+    public function isLogged()
+    {
+        return isset($this->sessionStorage->user) && !empty($this->sessionStorage->user);
+
     }
 }

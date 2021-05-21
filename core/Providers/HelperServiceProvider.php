@@ -19,6 +19,7 @@ class HelperServiceProvider implements ServiceProviderInterface
         // TODO: Implement register() method.
         $container['helper'] = new Helper($container);
         $container['helper']->register('app', '\Oink\Helpers\AppHelper');
+        $container['helper']->register('url', '\Oink\Helpers\UrlHelper');
         return $container;
     }
 }
