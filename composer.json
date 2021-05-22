@@ -7,7 +7,9 @@
         "pimple/pimple": "^3.4",
         "catfan/medoo": "^1.7",
         "twig/twig": "^3.3",
-        "symfony/event-dispatcher": "^5.2"
+        "symfony/event-dispatcher": "^5.2",
+        "robmorgan/phinx": "^0.12.7",
+        "fzaninotto/faker": "^1.9"
     },
     "autoload": {
         "psr-4": {
